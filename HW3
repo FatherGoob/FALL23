@@ -1,0 +1,84 @@
+//Written by Gabriel Burke
+
+import java.util.*;
+//This imports all tools
+
+public class Problem1 {
+//This program takes the gratuity rate and subtotal of a bill and outputs the exact gratuity and final bill after the gratuity is added
+
+    public static void main(String[] args) {
+        //This Scanner takes the subtotal input from the user
+        Scanner subtotalIn = new Scanner(System.in);
+        System.out.println("Enter Subtotal of the bill: ");
+        Double subtotal = subtotalIn.nextDouble();
+
+        //This Scanner takes the gratuity rate input from the user
+        Scanner gratuityRateIn = new Scanner(System.in);
+        System.out.println("Enter the gratuity rate: ");
+        Double gratuityRate = gratuityRateIn.nextDouble();
+
+        //These doubles store both the gratuity total and total bill into values to use in the output
+        Double gratuity = (subtotal * gratuityRate)/100;
+        Double totalBill = (gratuity + subtotal);
+
+        //These outputs give the user the end information, both the gratuity and total bill
+        System.out.println("The amount for gratuity is $" + gratuity);
+        System.out.println("The total final bill is $" + totalBill);
+
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------
+//Written by Gabriel Burke
+
+import java.util.*;
+//This imports all tools
+
+public class Problem2 {
+    //This program takes the weight in pounds and the height in inches and outputs the calculated BMI of the user
+    public static void main(String[] args) {
+
+        //This Scanner takes the weight in pounds input
+        Scanner weightIn = new Scanner(System.in);
+        System.out.println("Enter weight in pounds: ");
+        Double weightPounds = weightIn.nextDouble();
+
+        //This Scanner takes the height in inches input
+        Scanner heightIn = new Scanner(System.in);
+        System.out.println("Enter height in inches: ");
+        Double heightInches = heightIn.nextDouble();
+
+        //These Doubles change our inputs to their respective kilograms and meters
+        Double weightKilo = weightPounds * 0.45359237;
+        Double heightMeters = heightInches * 0.0254;
+
+        //This Double stores the BMI calculation in a bmi value
+        Double bmi = weightKilo / Math.pow(heightMeters, 2);
+
+        //This output combo displays the calculated BMI and limits the decimal to only 4 points. 
+        System.out.print("BMI is ");
+        System.out.format("%.4f", bmi);
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------
+//Written by Gabriel Burke
+
+import java.util.*;
+//This imports all tools
+
+public class Problem3 {
+    //This program takes a minutes value and outputs the amount of years and days those mintues equate too
+    public static void main(String[] args) {
+        //This scanner takes in the minutes input from the user
+        Scanner minutesIn = new Scanner(System.in);
+        System.out.println("Enter number of minutes: ");
+        int minutes = minutesIn.nextInt();
+
+        //These are the calculations for making the minutes into years, then taking the remaining minutes into days.
+        int years = minutes / 525600;
+        int remainingMinutes = minutes % 525600;
+        int days = remainingMinutes / 1440;
+
+        //This outputs the total years and days
+        System.out.println(minutes + "minutes is approximately " + years + " years and " + days + " days");
+    }
+}
