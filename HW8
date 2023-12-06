@@ -1,0 +1,112 @@
+import java.util.*;
+// Written by Gabriel Burke
+// This program takes a number and displays the multiplication table for said number up to 10
+
+public class Problem1 {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Receive the number
+        System.out.print("Please enter a number: ");
+        int number = input.nextInt();
+
+        int count = 0;
+
+        System.out.println("Multiplication Table for " + number);
+        System.out.println("Multiplier   Result");
+        System.out.println("--------------------------");
+
+        // Iterates through count until count reaches 9
+        // Displays each multiplication from 1-9 in an orderly fashion
+        while (count < 9) {
+
+            count++;
+            int mult = number*count;
+            System.out.printf("%n%d%12d",count,mult);
+
+        }
+
+        // Displays the multiplication for 10 and displays in orderly fashion
+        System.out.printf("%n%d%11d",10,number*10);
+
+
+    }
+}
+---------------------------------------------------------------------------------------------------------
+import java.util.*;
+// Written by Gabriel Burke
+// This program asks the user for a number until the number is 0
+// Then displays the sum and the average of all the inputted numbers
+
+public class Problem2 {
+
+    public static void main(String[] args) {
+
+        // Receive first number
+        Scanner input = new Scanner(System.in);
+        System.out.print("Please enter a values and terminate with 0: ");
+        int number = input.nextInt();
+
+        int sum = 0;
+        int total = 0;
+
+        // Receive new number until the given number is 0
+        // Adds the given number to the sum variable
+        // Adds 1 to the total variable
+        while (number != 0) {
+
+            sum += number;
+            total++;
+
+            System.out.print("Please enter a values and terminate with 0: ");
+            number = input.nextInt();
+
+        }
+
+        // Calculates the average of all given numbers
+        double average = (double)sum/total;
+
+        // Prints out both the sum and average of all given numbers
+        System.out.println("The sum is " + sum);
+        System.out.println("The average is " + average);
+
+    }
+}
+---------------------------------------------------------------------------------------------------------
+import java.util.*;
+// Written by Gabriel Burke
+// This program asks the user for a string and displays the amount of Vowels and Consonants are in the string
+
+public class Problem3 {
+
+    public static void main(String[] args) {
+
+        // Receives string
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String userString = input.nextLine();
+
+        int vowels = 0, consonants = 0;
+
+        String line = userString.toUpperCase();
+
+        // For loop that runs through each char in the string and totals up how many Vowels and Consonants there are
+        for (int i = 0; i < line.length(); ++i) {
+            char ch = line.charAt(i);
+
+            // check if character is a vowel
+            if (ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U') {
+                ++vowels;
+            }
+
+            // check if character is a consonant
+            else if ((ch >= 'A' && ch <= 'Z')) {
+                ++consonants;
+            }
+        }
+
+        System.out.println("Vowels: " + vowels);
+        System.out.println("Consonants: " + consonants);
+    }
+}
