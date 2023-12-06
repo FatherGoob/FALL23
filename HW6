@@ -1,0 +1,164 @@
+import java.util.*;
+
+//Written by Gabriel Burke
+//This program plays Rock, Paper, Scissors with the user using a switch statement rather than an if-else
+
+public class Problem1 {
+    public static void main(String[] args) throws Exception {
+
+        int min = 0; // Minimum value of range
+
+        int max = 2; // Maximum value of range 
+
+        // Generate random int value from min to max
+        int computerplay = (int)Math.floor(Math.random() * (max - min + 1) + min);
+
+        //Asks user for their perferred input
+        System.out.println("Rock(0), Paper(1), Scissors(2). Please enter a number: ");
+
+        //reads and stores user input
+        Scanner input = new Scanner(System.in);
+        int player = input.nextInt();
+
+        //Switch statement on the output of the computer
+        switch (computerplay) {
+
+            //Case if computer throws a 0 (Rock)
+            case 0:
+                if  (player == 0)
+                    System.out.println("Computer threw Rock! You threw Rock! You have tied!");
+                if (player == 1)
+                    System.out.println("Computer threw Rock! You threw Paper! You have Won!");
+                if (player == 2)
+                    System.out.println("Computer threw Rock! You threw Scissors! You have lost!");
+                break;
+
+            //Case if computer throws a 1 (Paper)
+            case 1:
+                if  (player == 0)
+                    System.out.println("Computer threw Paper! You threw Rock! You have lost!");
+                if (player == 1)
+                    System.out.println("Computer threw Paper! You threw Paper! You have tied!");
+                if (player == 2)
+                    System.out.println("Computer threw Paper! You threw Scissors! You have won!");
+                break;
+
+            //Case if computer throws a 2 (Scissors)
+            case 2:
+                if  (player == 0)
+                    System.out.println("Computer threw Scissors! You threw Rock! You have won!");
+                if (player == 1)
+                    System.out.println("Computer threw Scissors! You threw Paper! You have lost!");
+                if (player == 2)
+                    System.out.println("Computer threw Scissors! You threw Scissors! You have tied!");
+                break;
+        }
+    }
+}
+--------------------------------------------------------------------------------------------------------------------
+import java.util.*;
+
+//Written by Gabriel Burke
+//This program takes a letter and outputs its respective number on a number dial
+
+public class Problem2 {
+    public static void main(String[] args) {
+
+        //accepts user input asking for a letter
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter a letter: ");
+        String letter = input.nextLine();
+        String message = "The corresponding number is ";
+
+        //Switch statement that checks user input and displays respective number
+        switch (letter) {
+
+            //Checks if input is between A-C & a-c
+            case "A", "a", "B", "b", "C", "c" :
+                System.out.println(message + "2");
+                break;
+
+            //Checks if input is between D-F & d-f
+            case "D", "d", "E", "e", "F", "f":
+                System.out.println(message + "3");
+                break;
+
+            //Checks if input is between G-I & g-i
+            case "G", "g", "H", "h", "I", "i":
+                System.out.println(message + "4");
+                break;
+
+            //Checks if input is between J-L & j-l
+            case "J", "j", "K", "k", "L", "l":
+                System.out.println(message + "5");
+                break;
+
+            //Checks if input is between M-O & m-o
+            case "M", "m", "N", "n", "O", "o":
+                System.out.println(message + "6");
+                break;
+
+            //Checks if input is between P-S & p-s
+            case "P", "p", "Q", "q", "R", "r", "S", "s":
+                System.out.println(message + "7");
+                break;
+
+            //Checks if input is between T-V & t-v
+            case "T", "t", "U", "u", "V", "v":
+                System.out.println(message + "8");
+                break;
+
+            //Checks if input is between W-Z & w-z
+            case "W", "w", "X", "x", "Y", "y", "Z", "z":
+                System.out.println(message + "9");
+                break;
+
+            //Checks if input is *, 0, or #
+            case "*", "0", "#":
+                if (letter == "*")
+                    System.out.println(message + letter);
+                if (letter == "0")
+                    System.out.println(message + letter);
+                if (letter == "#")
+                    System.out.println(message + letter);
+            default:
+                System.out.println(letter + " is invalid input");
+                break;
+
+
+        }
+    }
+}
+--------------------------------------------------------------------------------------------------------------------
+import java.util.*;
+
+//Written by Gabriel Burke
+//This program creates a random license plate number with 3 letters following 4 numbers like ABC1234
+
+public class Problem3 {
+    public static void main(String args[]) {
+
+        int letters = 0;
+        int numbers = 0;
+
+        //While there are less than 3 letters, create a random letter and add print it
+        while (letters < 3) {
+
+            //Generates a random number between 65-90 then turns it into its respected character
+            int rand = (int)(Math.random() * (90 - 65 +1)) + 65;
+            char c = (char) rand;
+            letters++;
+            System.out.print((char) rand);
+
+        }
+        //While there are less than 4 number, create a random letter and print it
+        while (numbers < 4) {
+
+            //Generates a random number between 0-9 and prints it
+            int rand = (int)(Math.random() * (9 - 0 + 1)) + 0;
+            numbers++;
+            System.out.print(rand);
+
+        }
+    }
+}
