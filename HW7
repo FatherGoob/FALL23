@@ -1,0 +1,48 @@
+import java.util.*;
+// This program was written by Gabriel Burke
+// This program takes a dollar amount from the user and displays the dollars and cents
+
+public class Problem1 {
+
+    public static void main(String[] args) {
+
+        // Create a Scanner
+        Scanner input = new Scanner(System.in);
+
+        // Receive the total dollar amount
+        System.out.print("Please enter an amount: ");
+        String amount = input.nextLine();
+
+        // Extract number of dollars
+        String numberOfOneDollars = amount.substring(1, amount.indexOf('.'));
+
+        // Extract cents
+        int cents = Integer.parseInt(amount.substring(amount.indexOf('.') + 1));
+
+        // Print amount of Dollars and Cents
+        System.out.println("There are " + numberOfOneDollars + " dollars and " + cents +  " cents.");
+
+    }
+}
+-------------------------------------------------------------------------------------------------------------------
+import java.util.*;
+// This program was written by Gabriel Burke
+// This program prints specific information in a specific format using printf()
+
+public class Problem2 {
+
+    public static void main(String[] args) {
+
+        String team = "Chiefs";
+        int week = 4;
+        int wins = 1;
+        int losses = 2;
+        int tie = 0;
+        double pct = .3333333;
+
+        System.out.printf("%s Week %s Statistics", team, week);
+        System.out.printf("%n Wins Loss   tie      Pct");
+        System.out.printf("%n %4d %4d %5d %8.3f", wins, losses, tie, pct);
+
+    }
+}
