@@ -1,0 +1,128 @@
+import java.util.*;
+//Written by Gabriel Burke
+//This program attempts to read 6 integers and prints the square of the value with the following rules:
+//If the integer in even, print out it's square
+//If the integer is odd, skip it and read another value
+//If the integer is 99 break and end program
+
+public class Problem1 {
+
+    public static void main(String[] args) {
+
+        int a = 0;
+
+        //Makes sure the amount of input integers does not go over 6
+        while (a <= 5) {
+
+            //Receives user input
+            System.out.println("Enter number: ");
+            Scanner input = new Scanner(System.in);
+            int number = input.nextInt();
+
+            //Checks if number is 99 first
+            if (number == 99) {
+
+                System.out.println("ALL DONE!");
+                break;
+
+            }
+            //Checks if number is divisible by 2 which would mean it is even
+            if (number % 2 == 0) {
+
+                a++;
+                System.out.println("Square is " + number*number);
+
+            }
+            //Checks if number is not divisible by 2 which would make it odd
+            if (number % 2 == 1) {
+
+                a++;
+                continue;
+
+                }
+            //Checks if amount of numbers entered has reached the maximum of 6
+            if (a == 6) {
+
+                System.out.println("ALL DONE!");
+
+            }
+
+            }
+        }
+    }
+---------------------------------------------------------------------------------------------------------
+import java.util.*;
+//Written by Gabriel Burke
+//This program reads an integer from the user and checks whether the number is Palindrome
+
+public class Problem2 {
+    public static void main(String[] args) {
+
+        System.out.println("Enter a 4-digit number: ");
+        Scanner input = new Scanner(System.in);
+        int x = input.nextInt();
+
+        //Envokes the isPalindrome method
+        //If true, prints the number is a Palindrome
+        //If false, prints the number is not a Palindrome
+        if (isPalindrome(x) == true) {
+            System.out.println(x + " is a palindrome");
+        }
+        if (isPalindrome(x) == false) {
+            System.out.println(x + " is NOT a palindrome");
+        }
+    }
+
+    //Creates the isPalindrome method
+    public static boolean isPalindrome(int x) {
+
+        //Checks if the given number is Palindrome and outputs true or false
+        int remainder, sum = 0, temp;
+
+        temp = x;
+        while (x > 0) {
+            //getting remainder
+            remainder = x % 10;
+            sum = (sum * 10) + remainder;
+            x = x / 10;
+        }
+        //Returns true if number is a Palindrome
+        if (temp == sum)
+            return true;
+        //Returns false if number is not a Palindrome
+        else
+            return false;
+
+    }
+}
+---------------------------------------------------------------------------------------------------------
+import java.util.*;
+//Written by Gabriel Burke
+//This program reads a dollar amount string from the user and outputs the dollars and cents
+
+public class Problem3 {
+    public static void main(String[] args) {
+
+        //Receives dollar amount as s
+        Scanner input = new Scanner(System.in);
+        System.out.print("Please enter an amount: ");
+        String s = input.nextLine();
+
+        //Envokes dollarCents method passing the s variable into it and printing out the result
+        System.out.print(dollarCents(s));
+    }
+
+    //Creates the dollarCents method
+    public static String dollarCents(String s) {
+
+        //Stores the number of dollars from s
+        String numberOfOneDollars = s.substring(1, s.indexOf('.'));
+
+        //Stores number of cents from s
+        int cents = Integer.parseInt(s.substring(s.indexOf('.') + 1));
+
+        //Returns both the number of dollars and cents
+        return "There are " + numberOfOneDollars + " dollars and " + cents +  " cents.";
+
+    }
+}
