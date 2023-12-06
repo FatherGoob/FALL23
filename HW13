@@ -1,0 +1,181 @@
+//Written By Gabriel Burke
+
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.Scanner;
+
+//Inventory manager
+//You run a store that has 5 items.
+//This program will read in the name of the 5 items, the price for each, and the
+//quantity.
+
+//See assignment sheet and comments in code for more details
+
+public class HW13{
+    static Scanner input = new Scanner(System.in);
+    static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args){
+        //declare the arrays....
+        int[] quantity = new int[5];
+        String[] list = createListOfItems();
+        double[] price = createListOfPrices(list);
+        int[] quantities = getQuantities(list);
+
+        //initialize quantity
+        for (int i = 0; i < 5; i++) {
+            quantity[i] += quantities[i];
+        }
+
+        //display all items, quantity, and price
+        displayListandCost(list,price,quantities);
+
+        //    T E S T
+        //System.out.println(Arrays.toString(list));
+        //System.out.println(Arrays.toString(price));
+        //System.out.println(Arrays.toString(quantities));
+
+        //prompt user and read string for an item to display and
+        //invoke findItem.
+        System.out.println("Enter Item to display: ");
+        String item = sc.nextLine();
+        findItem(list, price, quantity, item);
+
+
+
+        //calculate and disply total cost of all inventory
+        System.out.printf("The total investment in inventory is: %.2f%n%n",inventoryCost(price,quantity));
+
+        //Display the low inventory
+        displayLowInventory(list,quantity);
+
+        //Extra credit - prompt user for an item and amount to reduce inventory
+        //call reduceInventory and then call displayListandCost
+        System.out.println("Enter item to reduce inventory: ");
+        String reduceItem = sc.nextLine();
+
+        //Receive amount to reduce by
+        System.out.println("Enter quantity to reduce: ");
+        int reduceAmount = sc.nextInt();
+
+        //Calls reduceInventory then the updated displayListandCost
+        reduceInventory(list,reduceItem,reduceAmount,quantity);
+        displayListandCost(list,price,quantity);
+
+        //Calls displayLowInventory again to show updated chart
+        displayLowInventory(list,quantity);
+
+    }//end main
+
+    public static String[] createListOfItems() {
+        //returns an array of String populated
+        //with 5 items needed from the groceryStore
+        String[] list = new String[5];
+
+        if (list.length <= 5) {
+            for (int i = 0; i < list.length; i++) {
+                System.out.print("Enter grocery item: ");
+                list[i] = input.nextLine();
+            }
+
+        }
+        return list;
+    }//end createListOfItems
+
+    public static double[] createListOfPrices(String[] list){
+    //displays each item of the list and the prompts and reads
+    //the price of the item.
+        double[] listPrices = new double[5];
+
+        if (listPrices.length <= 5) {
+            for (int i = 0; i < list.length; i++) {
+                System.out.println("Enter price for " + list[i] + ": ");
+                listPrices[i] += input.nextDouble();
+            }
+        }
+        return listPrices;
+    }//end createListOfPrices
+
+    public static int[] getQuantities(String[] list){
+    //displays each item in list and ask user to enter the current quantity
+    //on hand and stores the value in an array of int
+        int[] listQuantities = new int[5];
+
+        if (listQuantities.length <= 5) {
+            for (int i = 0; i < list.length; i++) {
+                System.out.println("Enter current inventory for " + list[i] + ": ");
+                listQuantities[i] += input.nextInt();
+            }
+        }
+        return listQuantities;
+    }//end getQuantities
+
+    public static void displayListandCost(String[] list, double[] price, int[] quantities){
+        //displays the inventory by printing
+        //           an element from the three arrays on a single line   quantity item cost
+        System.out.println("Quantity         Item      Cost");
+
+        for (int i = 0; i < list.length; i++) {
+            if (quantities[i] < 10) {
+                System.out.printf("%-1d%20s%10.2f%n",quantities[i],list[i],price[i]);
+            }
+            if (quantities[i] >= 10) {
+                System.out.printf("%-2d%19s%10.2f%n",quantities[i],list[i],price[i]);
+            }
+        }
+
+    }//end displayListandCost
+
+
+    public static void findItem(String[] list, double[] price, int[] quantity, String item){
+        //searches list for item
+        //if item is found in the list, will display  item quantity, and price
+        //if item is not in the list, display an appropriate message to the user
+
+        for (int i = 0; i < list.length; i++) {
+            if (Objects.equals(list[i], item)) {
+                System.out.printf("Item: %s Qty: %d Cost: %.2f%n%n",list[i],quantity[i],price[i]);
+            }
+        }
+    }//end findItem
+
+    public static double inventoryCost(double[] price, int[] qty){
+    //sums the quantity * price for each item and returns this value
+        double sum = 0;
+
+        for (int i = 0; i < qty.length; i++) {
+            sum += (price[i] * qty[i]);
+        }
+        return sum;
+    }//end inventoryCost
+
+    public static void displayLowInventory(String[] list, int[] qty){
+        //displays items in list with quantity on hand of less than 3
+        int stockCount = 0;
+        for (int i = 0; i < list.length; i++) {
+            if (qty[i] < 3) {
+                stockCount++;
+                System.out.println("Items that are low in stock: " + list[i]);
+            }
+        }
+        if (stockCount > 0) {
+            System.out.printf("There are a total of %d items that are low %n%n.", stockCount);
+        }
+        if (stockCount == 0) {
+            System.out.println("There are no items low in stock!");
+        }
+    }//end displayLowInventory
+
+    //extra credit
+    public static void reduceInventory(String[] list, String item, int amount, int[] qty){
+        //finds item in list and reduces qty by amount
+
+        for (int i = 0; i < list.length; i++) {
+            if (Objects.equals(list[i], item)) {
+                qty[i] -= amount;
+            }
+        }
+    }//end reduceInventory
+
+
+}
