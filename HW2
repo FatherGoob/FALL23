@@ -1,0 +1,46 @@
+import java.util.Scanner ;
+//This program was created by Gabriel Burke - 8/25/23
+
+public class Problem1 {
+
+    //This first problem takes in two user inputs, the width and the height then outputs both the area and perimeter.
+
+    public static void main(String[] args) {
+        System.out.println("Please enter the width: ");
+        Scanner input1 = new Scanner(System.in);
+        double width = input1.nextDouble();
+
+        System.out.println("Please enter the height: ");
+        Scanner input2 = new Scanner(System.in);
+        double height = input2.nextDouble();
+
+        double area = width * height;
+        double perimeter = (2*width) + (2*height);
+
+        System.out.println("Area is " + area);
+        System.out.println("Perimeter is " + perimeter);
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------
+import java.util.Scanner ;
+//This program was created by Gabriel Burke - 8/25/23
+
+public class Problem2 {
+
+//This second program takes the input of radius from the user and outputs both the area and volume.
+
+    public static void main (String[] args) {
+
+        System.out.println("Please enter the radius: ");
+        Scanner input1 = new Scanner(System.in);
+        double radius = input1.nextDouble();
+
+        final double PI = 3.14159;
+
+        double area = 4 * PI * radius * radius;
+        double volume = (4.0/3.0) * PI * (radius * radius * radius);
+
+        System.out.println("Area is " + area);
+        System.out.println("Volume is " + volume);
+    }
+}
