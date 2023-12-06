@@ -1,0 +1,144 @@
+import java.util.*;
+
+//Written by Gabriel Burke
+//This program playes Rock, Paper, Scissors with the user
+
+public class Problem1 {
+    //This program is the popular game rock, paper, scissors.
+    //It will ask the user for the input then generate a random number and assign that numbe to rock, paper, or scissor
+    //It will then tell the user if they have won or lost.
+
+    public static void main(String[] args) throws Exception {
+
+
+        int min = 0; // Minimum value of range
+
+        int max = 2; // Maximum value of range
+
+        // Generate random int value from min to max
+        int computerplay = (int)Math.floor(Math.random() * (max - min + 1) + min);
+
+        //Asks user for their perferred input
+        System.out.println("Rock(0), Paper(1), Scissors(2). Please enter a number: ");
+
+        //reads and stores user input
+        Scanner input = new Scanner(System.in);
+        int player = input.nextInt();
+
+        //Checks if random int is 0 which would be Rock
+        //Checks if user input either wins, loses or ties against it
+        if (computerplay == 0) {
+            System.out.print("Computer has thrown Rock! ");
+            if (player == 0) {
+                System.out.println("You have thrown Rock! You have tied!"); }
+            else if (player == 1) {
+                System.out.println("You have thrown Paper! You have won!"); }
+            else if (player == 2) {
+                System.out.println("You have thrown Scissors! You have lost!"); }
+        }
+
+        //Checks if random int is 1 which would be Paper
+        //Checks if user input either wins, loses or ties against it
+        if (computerplay == 1) {
+            System.out.println("Compter has thrown Paper! ");
+            if (player == 0) {
+                System.out.println("You have thrown Rock! You have lost!"); }
+            else if (player == 1) {
+                System.out.println("You have thrown Paper! You have tied!"); }
+            else if (player == 2) {
+                System.out.println("You have thrown Scissors! You have won!"); }
+        }
+
+        //Checks if random int is 2 which would be Scissors
+        //Checks if user input either wins, loses or ties against it
+        if (computerplay == 2) {
+            System.out.println("Computer has thrown Scissors! ");
+            if (player == 0) {
+                System.out.println("You have thrown Rock! You have won!"); }
+            else if (player == 1) {
+                System.out.println("You have thrown Paper! You have lost!"); }
+            else if (player == 2) {
+                System.out.println("You have thrown Scissors! You have tied!"); }
+        }
+
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------
+import java.util.*;
+
+//Written by Gabriel Burke
+//This program generates 2 random numbers then asks the user to guess what numbers the computer has chosen
+
+
+public class Problem2 {
+    public static void main(String[] args) {
+
+        int number1 = (int) (Math.random() * 10);
+        int number2 = (int) (Math.random() * 10);
+
+        //These two were to test a steady guess by the computer so I could test all 3 outcomes
+            //int number1 = 5;
+            //int number2 = 8;
+
+        //Asks user for their perferred input
+        System.out.println("Please enter two integers: ");
+
+        //reads and stores user input
+        Scanner input = new Scanner(System.in);
+        int playernum1 = input.nextInt();
+        int playernum2 = input.nextInt();
+
+        //These are to test what the computer guesses and what to user guesses
+            //System.out.println(number1 + " " + number2);
+            //System.out.println(playernum1 + " " + playernum2);
+
+
+
+        if (number1 == playernum1 || number1 == playernum2 && number2 == playernum1 || number2 == playernum2) {
+            System.out.println("You guessed both correctly!"); }
+        else if (playernum1 == number1 || playernum1 == number2) {
+            System.out.println("You guessed one correctly!"); }
+        else if (playernum2 == number1 || playernum2 == number2) {
+            System.out.println("You guessed one correctly!"); }
+        else
+            System.out.println("Better luck next time!");
+
+
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------
+import java.util.*;
+
+//Written by Gabriel Burke
+//This program checks if a number is considered a palindrome or not
+
+public class Problem3 { public static void main(String[] args){
+
+    //creates a remainder, sum, and temp int and assigns sum to 0
+    int remainder,sum=0,temp;
+
+    //Asks the user for the number they want to test
+    System.out.println("Please enter number: ");
+    Scanner input = new Scanner(System.in);
+    int number = input.nextInt();
+
+    temp=number;
+
+    //checks if the number is greater than 0
+    //then gets the remainder of number
+    //then adds the sum *10 + the remainder
+    //then divides the number by 10 and reassigns the number variable
+    while(number>0){
+        remainder=number%10;
+        sum=(sum*10)+remainder;
+        number=number/10;
+    }
+
+    //Checks if the temp variable is the same as the end result of the while loop
+    //If temp = sum then the number is a palindrome, if not then it isn't a palindrome
+    if(temp==sum)
+        System.out.println(temp + " is a palindrome number!");
+    else
+        System.out.println(temp + " is not a palindrome!");
+    }
+}
