@@ -1,0 +1,187 @@
+import java.util.*;
+//Written by Gabriel Burke
+//This program is a basic trip cost calculator based on a set of pre-determined food, room, and activities
+
+public class HW11 {
+    public static void main(String[] args) {
+
+        //Creates overall trip total
+        int tripTotal = 0;
+
+        //Counts total of guests to iterate through
+        int i = 0;
+
+        //Welcome message
+        System.out.println("Welcome to Likuliku Lagoon Resort - Malolo Island, Fiji!");
+
+        //Receives amount of guests from user
+        Scanner input1 = new Scanner(System.in);
+        System.out.print("Please enter number of guests: ");
+        int guests = input1.nextInt();
+
+        //Receives total number of nights
+        Scanner input2 = new Scanner(System.in);
+        System.out.print("How many nights will you be staying? ");
+        int nights = input2.nextInt();
+
+
+        //Iterates through each method individually for all guests
+        //Then adds up totals and figures average cost per person per night
+        while (guests > i) {
+
+            //Asks guest each question; Room, Mealplan, and activites
+            i++;
+            System.out.println("---------------------------------------");
+            System.out.println("Start entering details for guest #" + i);
+
+            //TESTS IGNORE
+                //calculateRoomCost(nights);
+                //calculateMealPlan(nights);
+                //getActivitiesCost();
+                //averageDailyCost(tripTotal, nights, guests);
+
+            //Adds total room cost for guest to total trip cost
+            tripTotal += calculateRoomCost(nights);
+            //Adds total MealPlan cost for guest to total trip cost
+            tripTotal += calculateMealPlan(nights);
+            //Adds total Activities cost for guest to total trip cost
+            tripTotal += getActivitiesCost();
+
+        }
+        //Prints out overall trip cost for all guests
+        System.out.println("The total cost estimate $" + tripTotal);
+        //Prints out average nightly cost for all guests per guest per night
+        System.out.println("The average nightly cost per person is $" + averageDailyCost(tripTotal, nights, guests));
+
+    }
+
+    //Calculates room cost based on 3 different types of rooms for each guest
+    public static double calculateRoomCost(int nights) {
+
+        //Creates Total Night cost
+        int nightCost = 0;
+
+        //Asks user to choose desired room choice
+        System.out.println("1: Standard Room no view $100/night");
+        System.out.println("2: Luxury Room with view $200/night");
+        System.out.println("3: Luxury Room with Balcony $300/night");
+
+        //Receives user for desired room
+        Scanner input1 = new Scanner(System.in);
+        System.out.println("Please enter your choice");
+        int roomChoice = input1.nextInt();
+
+        //Assigns users choice to correct cost value
+        if (roomChoice == 1) {
+            nightCost += nights * 100;
+        }
+        if (roomChoice == 2) {
+            nightCost += nights * 200;
+        }
+        if (roomChoice == 3) {
+            nightCost += nights * 300;
+        }
+
+        //Returns the total Night Cost after users choice
+        return nightCost;
+    }
+
+    //Method to calculate total Meal Plan cost per guest
+    public static double calculateMealPlan(int nights) {
+
+        //Creates Total Meal Cost
+        int mealCost = 0;
+
+        //Asks user for desired meal plan
+        System.out.println("1: Lunch & Dinner only $65");
+        System.out.println("2: 3-Meals a day $150");
+        System.out.println("3: 3-Meals a day with drinks $225");
+        System.out.println("4: No meal plan $0");
+
+        //Receives users choice
+        Scanner input1 = new Scanner(System.in);
+        System.out.println("Please enter your choice");
+        int mealChoice = input1.nextInt();
+
+        //Assigns users choice to correct cost value
+        if (mealChoice == 1) {
+            mealCost += nights * 65;
+        }
+        if (mealChoice == 2) {
+            mealCost += nights * 150;
+        }
+        if (mealChoice == 3) {
+            mealCost += nights * 225;
+        }
+        if (mealChoice == 4) {
+            return 0;
+        }
+
+        //Returns total meal cost after users choice
+        return mealCost;
+
+    }
+
+    //Method to calculate total Activities cost
+    public static double getActivitiesCost() {
+
+        //Creates Activities total cost
+        int total = 0;
+
+        //Asks user which activities they want until they input "6" to close loop
+        while (total >= 0) {
+
+            System.out.println("Choose from these activities");
+            System.out.println("1: Scuba Adventure $300");
+            System.out.println("2: Island Shopping Hop $100");
+            System.out.println("3: Paddle Boarding $125");
+            System.out.println("4: Deep Sea Fishing $500");
+            System.out.println("5: Beach Sitting $0");
+            System.out.println("6: That's all--Done!");
+
+            //Receives user choice
+            Scanner input = new Scanner(System.in);
+            System.out.println("Please enter your choice");
+            int activityChoice = input.nextInt();
+
+            //Assigns users choice to correct cost value
+            while (activityChoice >= 0) {
+                if (activityChoice == 6) {
+                    break;
+                }
+                if (activityChoice == 1) {
+                    total += 300;
+                }
+                if (activityChoice == 2) {
+                    total += 100;
+                }
+                if (activityChoice == 3) {
+                    total += 125;
+                }
+                if (activityChoice == 4) {
+                    total += 500;
+                }
+                if (activityChoice == 5) {
+                    total += 0;
+                }
+                break;
+                }
+            if (activityChoice == 6) {
+                break;
+            }
+        }
+        //Returns total cost of all activities user selected
+        return total;
+    }
+
+    //Method to calculate the average daily cost per person
+    public static double averageDailyCost(int tripTotal,int nights,int guests) {
+
+        //Creates mathematical equation to calculate the average cost per person
+        int averageCost = tripTotal/(nights*guests);
+
+        //Returns the product of above equation
+        return averageCost;
+
+    }
+}
