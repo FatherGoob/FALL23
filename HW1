@@ -8,4 +8,27 @@ public class First {
             System.out.println("Computer Science");
             System.out.println("BIG JUICY BURGER");
         }
+}
+-------------------------------------------------------------------------------------------
+// Second Problem written by Gabriel Burke
+
+public class Second {
+
+        // Prints out JAVA with each letter being drawn out by that letter on a new line.
+        public static void main (String[] args) {
+            System.out.println("    J      A    V       V    A    ");
+            System.out.println("    J     A A    V     V    A A   ");
+            System.out.println(" J  J    AAAAA    V   V    AAAAA  ");
+            System.out.println(" J  J   A     A    V V    A     A ");
+            System.out.println("  JJ    A     A     V     A     A ");
+        }
+}
+-------------------------------------------------------------------------------------------
+// Third problem written by Gabriel Burke
+
+public class Third {
+    // Prints out 15 by adding 5 to 10.
+    public static void main (String[] args) {
+        System.out.println(5 + 10);
     }
+}
