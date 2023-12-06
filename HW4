@@ -1,0 +1,51 @@
+import java.util.*;
+
+//Written by Gabriel Burke
+
+public class Problem1 {
+    //This program takes an integer as an input and outputs either even or odd
+    public static void main(String[] args) {
+
+        //This scanner takes the integer from the user
+        Scanner input1 = new Scanner(System.in);
+        System.out.println("Please enter and integer: ");
+        int number = input1.nextInt();
+
+        //This checks if the number is dividable by 2
+        //If the number is dividable by 2 then it is even, if not it is odd
+
+        if (number % 2 == 0)
+                System.out.println(number + " Is even!");
+        else
+           System.out.println(number + " is odd!");
+
+    }
+}
+------------------------------------------------------------------------------------------
+import java.util.*;
+
+//Written by Gabriel Burke
+
+public class Problem2 {
+    public static void main(String[] args) {
+        //This program takes 3 inputs from the user and assigns them as sides of a triangle
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Please enter 3 sides of a triangle: ");
+        int side1 = scanner.nextInt();
+        int side2 = scanner.nextInt();
+        int side3 = scanner.nextInt();
+
+        //Assigning the perimeter variable for the if/else
+        int perimeter = side1 + side2 +side3;
+
+        //Adds side1 and side3 together then checks if the total is more than side3
+        //If the total of side1 and side2 are equal to or less than it is an illegal triangle
+        //If the total of side1 and side2 is more than side3 it outputs the perimeter of the triangle 
+
+        if (side1 + side2 <= side3)
+            System.out.println("The sides " + side1 + " " + side2 + " " + side3 + " make an illegal triangle");
+        else
+            System.out.println("The perimeter is " + perimeter);
+
+    }
+}
