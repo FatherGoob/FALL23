@@ -1,0 +1,174 @@
+//Written by Gabriel Burke
+//This program uses a for-loop to initialize specific values into an array
+
+public class Problem1 {
+
+
+    public static void main(String[] args) {
+
+        //Print statements for top of chart
+        System.out.println("The contents of the array is:");
+        System.out.println("Index         Value");
+
+        //Creating empty array
+        int[] num;
+
+        //Assigning 12 spaces inside array
+        num = new int[12];
+        int count = 0;
+
+        //for-loop that assigns each value in the array and correctly outputs its value
+        for (int i = 0; i < num.length; i++) {
+
+            if (i < 10) {
+                num[i] += count += 2;
+                System.out.printf("%d%16d%n", i, num[i]);
+            }
+
+            if (i >= 10) {
+                num[i] += count += 2;
+                System.out.printf("%d%15d%n", i, num[i]);
+            }
+
+        }
+    }
+}
+-------------------------------------------------------------------------------------------------------------
+//Written by Gabriel Burke
+//This program reads integers between 1-10 and counts the occurrences of each
+
+import java.util.*;
+
+
+public class Problem2 {
+
+    public static void main(String[] args) {
+
+        //Asks user for numbers
+        System.out.println("Enter some integers between 1 and 10 (and 0 when done): ");
+        Scanner input = new Scanner(System.in);
+
+        //Creates array for user input
+        int[] myArray = new int[1000];
+
+        //Variable for user inputs
+        int number;
+        int count = 0;
+
+        //Do the while for every array object
+        do
+        {
+            number = input.nextInt();
+            myArray[count] = number;
+            count++;
+        }
+
+        //Iterates through each number and adds one to counter of correct number
+        while (number != 0);
+
+        //Create a new array with only the numbers
+        int[] mySort = new int [count - 1];
+
+        //get the array until 0th number into new
+        for(int i = 0; i < (count - 1); i++) {
+            mySort[i] = myArray[i];
+        }
+
+        //Sort the array in ascending order
+        java.util.Arrays.sort(mySort);
+
+        int n = 0;
+        //See if the number has been checked before
+        for(int i = 0; i < mySort.length; i++) {
+            int occurance = 0;
+            if(n >= mySort[i]) {
+                continue;
+            }
+            else {
+                //If new number found do the calculation+
+                n = mySort[i];
+                for (int j=0; j<mySort.length; j++)
+                    if (n == mySort[j])
+                        occurance++;
+                System.out.print(n +  " occurs " + occurance );
+                {
+                    if (occurance == 1) {
+                        System.out.println(" time.");
+                    }
+                    else {
+                        System.out.println(" times.");
+                    }
+                }
+            }
+        }
+    }
+}
+-------------------------------------------------------------------------------------------------------------
+//Written by Gabriel Burke
+//This program reads 10 strings, stores each in an array
+//Then displays the contents of the array using a for-loop
+//Then displays the content of the array in reverse order
+//Then last off prompts the user for a char and displays each string that starts with said char
+
+import java.util.*;
+
+public class Problem3 {
+
+    public static void main(String[] args) {
+        String arr[] = new String[10];
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter the Strings into the array (press enter after each string): ");
+
+        //Takes input and places each string into the array
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = scan.nextLine();
+        }
+
+        //Calls the order method to print array values in order
+        order(arr);
+
+        //Calls the reverse method to print array values in reverse
+        reverse(arr);
+
+        //Calls the showChar method to accept a user character
+        //and outputs each string in the array that starts with said character
+        showChar(arr, scan);
+
+    }
+
+    //Method that takes each array element and returns them in the order they were taken
+    public static void order(String arr[]) {
+        System.out.println("The elements of the array are:");
+        //Printing out
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println(" ");
+        System.out.println(" ");
+    }
+
+    //Method that takes each array element and returns them in reverse order
+    public static void reverse(String arr[]) {
+        System.out.println("The Array in reverse: ");
+        for (int i = arr.length - 1; i >= 0; i--) {
+            //arr[i] = scan.nextLine();
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println(" ");
+        System.out.println(" ");
+    }
+
+    //Method that takes a char from the user and prints each string that starts with said char
+    public static void showChar(String arr[],Scanner scan) {
+        System.out.println("Enter the Character you wish to see: ");
+        String s = scan.nextLine();
+
+        for (int i = 0; i < arr.length; i++) {
+            char c = s.charAt(0);
+            String str = arr[i];
+            if (str.charAt(0) == c) {
+                System.out.println(str);
+            }
+        }
+    }
+}
