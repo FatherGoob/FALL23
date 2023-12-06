@@ -1,0 +1,11 @@
+// First Problem written by Gabriel Burke
+
+public class First {
+
+        // Prints out my name, major, and favorite food.
+        public static void main (String[] args) {
+            System.out.println("Gabriel Burke");
+            System.out.println("Computer Science");
+            System.out.println("BIG JUICY BURGER");
+        }
+    }
